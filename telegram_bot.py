@@ -40,14 +40,13 @@ async def error(update: Update, context: ContextTypes.DEFAULT_TYPE):
     print(f"Update {update} caused error {context.error}")
  
  
-base_url = "http://0.0.0.0:8000" # - query - result
+base_url = "http://127.0.0.1:8000" # - query - result
  
 # base_url = "https://webapp-be-nlq.azurewebsites.net"  # - input - output
  
 def call_search_api2(query:str):
     payload = {"query": query}
-    print("hiii")
-    response = requests.post(f"{base_url}/search_query", json=payload)
+    response = requests.post(f"{base_url}/search", json=payload)
     if response.status_code == 200:
         return response.json().get("result")
     else:
