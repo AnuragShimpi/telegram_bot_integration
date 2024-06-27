@@ -26,7 +26,7 @@ async def custom_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     message_type: str = update.message.chat.type
     text: str = update.message.text
- 
+    #session_id = str(update.message.chat_id)
     # print("message type :: ",message_type)
     
     print(f"user id :: ({update.message.chat.id}) user name :: ({update.message.chat.username})")
