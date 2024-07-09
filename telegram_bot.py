@@ -42,7 +42,7 @@ async def error(update: Update, context: ContextTypes.DEFAULT_TYPE):
  
 base_url = "http://127.0.0.1:8000" # - query - result
  
-# base_url = "https://webapp-be-nlq.azurewebsites.net"  # - input - output
+# base_url = "You can pass any url"  # - input - output
  
 def call_search_api2(query:str):
     payload = {"query": query}

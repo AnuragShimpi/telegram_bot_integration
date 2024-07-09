@@ -4,9 +4,6 @@ import os
 from config import *
 from langchain_cohere import ChatCohere
 from langchain.agents import AgentType, initialize_agent, load_tools
-from langchain.chains import ConversationChain, LLMChain
-from langchain_core.prompts import PromptTemplate
-from langchain.chains.conversation.memory import ConversationBufferWindowMemory, ConversationBufferMemory
  
 app = FastAPI()
  
