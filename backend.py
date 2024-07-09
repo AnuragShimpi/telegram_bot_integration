@@ -1,8 +1,12 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import os
+from config import *
 from langchain_cohere import ChatCohere
 from langchain.agents import AgentType, initialize_agent, load_tools
+from langchain.chains import ConversationChain, LLMChain
+from langchain_core.prompts import PromptTemplate
+from langchain.chains.conversation.memory import ConversationBufferWindowMemory, ConversationBufferMemory
  
 app = FastAPI()
  
@@ -10,9 +14,9 @@ class QueryRequest(BaseModel):
     query: str
  
 # Set environment variables for API keys
-os.environ['cohere_api_key'] = "PKYJ9mWpadwNW8Oj44ftpOr6rKzBkzW6eT2iZhaC"
-os.environ['OPENWEATHERMAP_API_KEY'] = "ccb2a2627f1646603dbc9721e03990dc"
-os.environ['serpapi_api_key'] = "73ce724cbce1469407bd4191a7b7c54aba5366019305d9f0f05f61791404f023"
+os.environ['cohere_api_key'] = "<cohere_api_key>"
+os.environ['OPENWEATHERMAP_API_KEY'] = "<OPENWEATHERMAP_API_KEY>"
+os.environ['serpapi_api_key'] = "<serpapi_api_key>"
  
  
 def search_query(query: str):
@@ -22,7 +26,7 @@ def search_query(query: str):
         "Ensure your answer is well-rounded and informative."
     )
  
-    llm = ChatCohere(model='command-r-plus', temperature=0)
+    llm = ChatCohere(cohere_api_key=cohere_api, model='command-r-plus', temperature=0)
     tools = load_tools(["serpapi" , 'openweathermap-api'], llm)
  
     agent_chain = initialize_agent(
