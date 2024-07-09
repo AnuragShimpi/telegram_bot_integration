@@ -1,19 +1,11 @@
-import os
 from config import *
 import telebot
-import os
-import telebot
-from telegram import Update
-from telegram.ext import Updater, CommandHandler, MessageHandler, filters, CallbackContext
 from langchain_cohere import ChatCohere
-from langchain.chains import ConversationChain, LLMChain
+from langchain.chains import ConversationChain
 from langchain_core.prompts import PromptTemplate
-from langchain_community.agent_toolkits.load_tools import load_tools
-from langchain.agents import AgentType, initialize_agent
-from langchain.chains.conversation.memory import ConversationBufferWindowMemory, ConversationBufferMemory
+from langchain.chains.conversation.memory import ConversationBufferMemory
 
     
-
 bot = telebot.TeleBot(telegram_api)
 
 template = """Name of Assistant is Jarvis and it is a large language model trained by Cohere.
